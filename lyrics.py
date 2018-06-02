@@ -31,7 +31,7 @@ class Lyrics(QTabWidget):
         self.SearchButon.setText("Search")
 
         self.FavButon = QPushButton(self)
-        self.FavButon.setText("Add a new Favorite")
+        self.FavButon.setText("Add a new favorite")
         self.FavButon.setIcon(QIcon("img/star+.png"))
         self.listwidget = QListWidget(self)
 
@@ -83,6 +83,7 @@ class Lyrics(QTabWidget):
 
         self.ListFav.doubleClicked.connect(self.printFavLyrics)
         self.DeleteButon.clicked.connect(self.deleteFav)
+
     def login(self):
         self.base_url = 'https://api.genius.com'
         self.headers = {'Authorization': 'Bearer ' + 'YOUR CLIENT ACCESSS TOKEN'}
@@ -122,10 +123,10 @@ class Lyrics(QTabWidget):
         return lyrics
 
     def errorMessageShow(self):
-        QMessageBox.warning(self, "Uyarı", "Lütfen  sıra seçin")
+        QMessageBox.warning(self, "Error", "Lütfen  sıra seçin")
 
     def infoMessageShow(self):
-        QMessageBox.information(self, "Başlık", "Başarı ile eklendi")
+        QMessageBox.information(self, "Info", "Successfully added")
 
     def addFav(self):
         if self.getIndex() == -1 :
@@ -133,7 +134,7 @@ class Lyrics(QTabWidget):
         else :
             title = self.getTitle()
             url = self.getUrl()
-            self.im.execute("""INSERT INTO  favorite(title, url) VALUES(?,?)""",(title,url))
+            self.im.execute("""INSERT INTO favorite(title, url) VALUES(?, ?)""", (title, url))
             self.db.commit()
             self.infoMessageShow()
             self.updateFav()
@@ -160,7 +161,6 @@ class Lyrics(QTabWidget):
         self.im.execute("""DELETE FROM favorite WHERE title = ? """, (self.favTitle,))
         self.db.commit()
         self.updateFav()
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
