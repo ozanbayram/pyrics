@@ -85,7 +85,7 @@ class Lyrics(QTabWidget):
         self.DeleteButon.clicked.connect(self.deleteFav)
     def login(self):
         self.base_url = 'https://api.genius.com'
-        self.headers = {'Authorization': 'Bearer ' + 'omB8LcHo4FPhaxPTWyC9OlOGpW5O-VFBJId8WbJfwzzDA2Xem2RXBn0jvpS-UOgU'}
+        self.headers = {'Authorization': 'Bearer ' + 'YOUR CLIENT ACCESSS TOKEN'}
         self.search_url = self.base_url + '/search'
 
     def printTitle(self):
