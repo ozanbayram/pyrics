@@ -86,7 +86,7 @@ class Lyrics(QTabWidget):
 
     def login(self):
         self.base_url = 'https://api.genius.com'
-        self.headers = {'Authorization': 'Bearer ' + 'YOUR CLIENT ACCESSS TOKEN'}
+        self.headers = {'Authorization': 'Bearer ' + 'YOUR CLIENT ACCESS TOKEN'}
         self.search_url = self.base_url + '/search'
 
     def printTitle(self):
